@@ -1,248 +1,161 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Github, Linkedin, Mail, ArrowUpRight, Brain, Sparkles, Code2, Database } from "lucide-react";
+import { Twitter, Linkedin, Github, Dribbble } from "lucide-react";
+import portrait from "@/assets/syed-portrait.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Syed Ibrahim — AI Engineer" },
-      { name: "description", content: "Syed Ibrahim is an AI Engineer building production-grade LLM systems, RAG pipelines, and intelligent agents." },
+      { name: "description", content: "Syed Ibrahim, AI Engineer. Building production LLM systems, RAG pipelines, and intelligent agents." },
       { property: "og:title", content: "Syed Ibrahim — AI Engineer" },
-      { property: "og:description", content: "Building intelligent systems with LLMs, RAG, and agentic workflows." },
+      { property: "og:description", content: "Building intelligence into software." },
     ],
   }),
   component: Portfolio,
 });
 
-const projects = [
-  {
-    title: "Atlas RAG",
-    tag: "Retrieval-Augmented Generation",
-    desc: "Production RAG framework over 12M enterprise docs. Hybrid BM25 + vector search with reranking, sub-300ms p95 latency.",
-    stack: ["LangChain", "Qdrant", "Cohere", "FastAPI"],
-    icon: Database,
-  },
-  {
-    title: "Synapse Agents",
-    tag: "Multi-Agent System",
-    desc: "Autonomous research agents that plan, browse, and synthesize reports. Tool-use orchestration with self-correction loops.",
-    stack: ["LangGraph", "OpenAI", "Playwright", "Redis"],
-    icon: Brain,
-  },
-  {
-    title: "Lumen Vision",
-    tag: "Computer Vision",
-    desc: "Real-time defect detection on manufacturing lines. Fine-tuned ViT model deployed on edge with TensorRT, 99.2% recall.",
-    stack: ["PyTorch", "ViT", "TensorRT", "ONNX"],
-    icon: Sparkles,
-  },
-  {
-    title: "Codex Copilot",
-    tag: "LLM Fine-Tuning",
-    desc: "Domain-specific code assistant fine-tuned on 4M internal commits via LoRA. Cut review time by 38% across 6 teams.",
-    stack: ["Llama 3", "PEFT", "vLLM", "Modal"],
-    icon: Code2,
-  },
-];
-
-const skills = [
-  "PyTorch", "TensorFlow", "LangChain", "LangGraph", "LlamaIndex",
-  "Hugging Face", "vLLM", "Triton", "Qdrant", "Pinecone", "Weaviate",
-  "FastAPI", "Ray", "MLflow", "Kubernetes", "AWS SageMaker",
-];
-
 function Portfolio() {
   return (
-    <div className="min-h-screen bg-hero">
-      {/* Nav */}
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/40 border-b border-border">
-        <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <a href="#top" className="font-mono text-sm tracking-tight">
-            <span className="text-gradient font-bold">syed</span>
-            <span className="text-muted-foreground">.ibrahim</span>
-          </a>
-          <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-            <a href="#work" className="hover:text-foreground transition-colors">Work</a>
-            <a href="#stack" className="hover:text-foreground transition-colors">Stack</a>
-            <a href="#about" className="hover:text-foreground transition-colors">About</a>
-            <a href="#contact" className="hover:text-foreground transition-colors">Contact</a>
-          </div>
-          <a
-            href="mailto:syed@ibrahim.dev"
-            className="text-xs font-mono px-3 py-1.5 rounded-full bg-primary text-primary-foreground hover:shadow-glow transition-shadow"
-          >
-            Let's talk →
-          </a>
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Top nav */}
+      <header className="max-w-[1400px] mx-auto px-8 lg:px-14 pt-8 flex items-center justify-between">
+        <a href="#" className="font-serif text-2xl tracking-tight italic">
+          Syed <span className="font-normal">Ibrahim.</span>
+        </a>
+        <nav className="hidden md:flex items-center gap-10 text-[13px] tracking-[0.18em] uppercase">
+          <a href="#work" className="hover:opacity-60 transition">Work</a>
+          <a href="#book" className="hover:opacity-60 transition">Book a call</a>
+          <a href="mailto:syed@ibrahim.dev" className="hover:opacity-60 transition">Email</a>
+          <a href="/cv.pdf" className="hover:opacity-60 transition">Download CV</a>
         </nav>
+        <a
+          href="#contact"
+          className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-5 py-2.5 text-[13px] tracking-wide"
+        >
+          <span className="size-1.5 rounded-full bg-background" /> Get in touch
+        </a>
       </header>
 
       {/* Hero */}
-      <section id="top" className="relative overflow-hidden">
-        <div className="absolute inset-0 grid-bg opacity-60" />
-        <div className="relative max-w-6xl mx-auto px-6 pt-32 pb-40">
-          <div className="flex items-center gap-2 mb-6 font-mono text-xs text-primary">
-            <span className="size-2 rounded-full bg-primary animate-pulse shadow-glow" />
-            AVAILABLE FOR Q3 2026 ENGAGEMENTS
-          </div>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.95]">
-            Building <span className="text-gradient">intelligence</span>
-            <br />
-            into software.
-          </h1>
-          <p className="mt-8 max-w-xl text-lg text-muted-foreground leading-relaxed">
-            I'm <span className="text-foreground font-medium">Syed Ibrahim</span>, an AI Engineer
-            shipping production LLM systems, retrieval pipelines, and autonomous agents
-            for teams that care about latency, evals, and cost.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <a
-              href="#work"
-              className="group inline-flex items-center gap-2 px-5 py-3 rounded-full bg-primary text-primary-foreground font-medium hover:shadow-glow transition-all"
-            >
-              See selected work
-              <ArrowUpRight className="size-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-border hover:bg-card transition-colors"
-            >
-              Book a call
-            </a>
+      <section className="max-w-[1400px] mx-auto px-8 lg:px-14 pt-16 lg:pt-20 pb-10">
+        <div className="grid grid-cols-12 gap-6 items-start">
+          {/* Left column */}
+          <div className="col-span-12 md:col-span-3 space-y-6">
+            <div className="text-[11px] tracking-[0.25em] uppercase text-muted-foreground">
+              Professional
+            </div>
+            <h1 className="font-serif text-[88px] md:text-[110px] leading-[0.88] tracking-[-0.04em]">
+              AI<br />Engineer<span className="italic-serif">.</span>
+            </h1>
+            <div className="flex flex-wrap gap-2 pt-2">
+              {["#LLMs", "#RAG", "#Agents", "#MLOps"].map((t) => (
+                <span key={t} className="text-xs tracking-wider text-muted-foreground">{t}</span>
+              ))}
+            </div>
+            <p className="text-sm text-muted-foreground max-w-xs leading-relaxed pt-4">
+              I am Syed Ibrahim — an engineer shipping production AI: retrieval pipelines,
+              autonomous agents, and finely-tuned models that quietly do the work of ten people.
+            </p>
           </div>
 
-          {/* Stats */}
-          <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl">
-            {[
-              ["6+", "years shipping ML"],
-              ["40M+", "tokens / day in prod"],
-              ["12", "models fine-tuned"],
-              ["3", "patents pending"],
-            ].map(([n, l]) => (
-              <div key={l}>
-                <div className="text-3xl md:text-4xl font-bold text-gradient">{n}</div>
-                <div className="mt-1 text-xs text-muted-foreground uppercase tracking-wider">{l}</div>
+          {/* Center portrait */}
+          <div className="col-span-12 md:col-span-6 relative">
+            <div className="relative mx-auto w-full max-w-[480px]">
+              <div className="aspect-[4/5] overflow-hidden rounded-full border border-border bg-secondary">
+                <img
+                  src={portrait}
+                  alt="Portrait of Syed Ibrahim, AI Engineer"
+                  width={768}
+                  height={896}
+                  className="w-full h-full object-cover"
+                />
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Work */}
-      <section id="work" className="max-w-6xl mx-auto px-6 py-32">
-        <div className="flex items-end justify-between mb-16">
-          <div>
-            <div className="font-mono text-xs text-primary mb-3">/ 01 — SELECTED WORK</div>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Things I've built.</h2>
-          </div>
-          <div className="hidden md:block text-sm text-muted-foreground max-w-xs">
-            A few projects spanning RAG, agents, vision, and fine-tuning.
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((p) => {
-            const Icon = p.icon;
-            return (
-              <article
-                key={p.title}
-                className="group relative p-8 rounded-2xl bg-card border border-border hover:border-primary/40 transition-all shadow-card hover:-translate-y-1 duration-300"
+              {/* Call badge */}
+              <a
+                href="#contact"
+                className="absolute -left-4 md:-left-10 bottom-6 size-28 md:size-32 rounded-full bg-background border border-foreground/80 flex flex-col items-center justify-center text-center font-serif italic text-xl leading-tight hover:bg-foreground hover:text-background transition"
               >
-                <div className="flex items-start justify-between mb-6">
-                  <div className="size-12 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center text-primary">
-                    <Icon className="size-5" />
-                  </div>
-                  <ArrowUpRight className="size-5 text-muted-foreground group-hover:text-primary group-hover:rotate-12 transition-all" />
-                </div>
-                <div className="font-mono text-[11px] text-primary uppercase tracking-wider mb-2">{p.tag}</div>
-                <h3 className="text-2xl font-semibold mb-3">{p.title}</h3>
-                <p className="text-muted-foreground leading-relaxed mb-6">{p.desc}</p>
-                <div className="flex flex-wrap gap-2">
-                  {p.stack.map((s) => (
-                    <span key={s} className="font-mono text-[11px] px-2.5 py-1 rounded-md bg-secondary text-secondary-foreground">
-                      {s}
-                    </span>
-                  ))}
-                </div>
-              </article>
-            );
-          })}
+                Call<br />Syed<br />→
+              </a>
+            </div>
+          </div>
+
+          {/* Right column — stats */}
+          <div className="col-span-12 md:col-span-3 space-y-10 md:pl-6 md:border-l md:border-border md:pt-4">
+            <Stat label="Years in AI" value="8" />
+            <Stat label="Eval Accuracy" value="100%" />
+            <Stat label="Tokens / day prod" value="+40M" />
+            <Stat label="Models shipped" value="645" />
+          </div>
+        </div>
+
+        {/* Bottom row — footer-of-hero */}
+        <div className="mt-16 pt-8 border-t border-border flex flex-wrap items-center justify-between gap-6">
+          <p className="font-serif italic text-lg max-w-md">
+            Want to make your hardest model impossible to ignore?
+          </p>
+          <div className="flex items-center gap-6 text-foreground/70">
+            <a href="https://twitter.com" aria-label="Twitter" className="hover:text-foreground"><Twitter className="size-4" /></a>
+            <a href="https://linkedin.com" aria-label="LinkedIn" className="hover:text-foreground"><Linkedin className="size-4" /></a>
+            <a href="https://github.com" aria-label="GitHub" className="hover:text-foreground"><Github className="size-4" /></a>
+            <a href="https://dribbble.com" aria-label="Dribbble" className="hover:text-foreground"><Dribbble className="size-4" /></a>
+          </div>
+          <div className="text-[11px] tracking-[0.25em] uppercase text-muted-foreground">
+            © 2026 — Istanbul / Remote
+          </div>
         </div>
       </section>
 
-      {/* Stack */}
-      <section id="stack" className="max-w-6xl mx-auto px-6 py-32 border-t border-border">
-        <div className="font-mono text-xs text-primary mb-3">/ 02 — STACK</div>
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-12">Tools of the trade.</h2>
-        <div className="flex flex-wrap gap-3">
-          {skills.map((s) => (
-            <span
-              key={s}
-              className="px-4 py-2 rounded-full border border-border bg-card hover:border-primary/50 hover:text-primary transition-colors font-mono text-sm"
-            >
-              {s}
-            </span>
+      {/* Work strip */}
+      <section id="work" className="max-w-[1400px] mx-auto px-8 lg:px-14 py-24 border-t border-border">
+        <div className="flex items-end justify-between mb-12">
+          <h2 className="font-serif text-5xl md:text-6xl tracking-[-0.03em]">
+            Selected <span className="italic-serif">work.</span>
+          </h2>
+          <div className="text-[11px] tracking-[0.25em] uppercase text-muted-foreground">/ 2024 — 2026</div>
+        </div>
+        <div className="grid md:grid-cols-2 gap-x-16 gap-y-12">
+          {[
+            { n: "01", t: "Atlas RAG", d: "Hybrid retrieval over 12M enterprise docs. Sub-300ms p95.", s: "LangChain · Qdrant · Cohere" },
+            { n: "02", t: "Synapse Agents", d: "Autonomous research agents with self-correction loops.", s: "LangGraph · OpenAI · Playwright" },
+            { n: "03", t: "Lumen Vision", d: "Real-time defect detection on edge. 99.2% recall.", s: "PyTorch · ViT · TensorRT" },
+            { n: "04", t: "Codex Copilot", d: "Domain-tuned code assistant via LoRA on 4M commits.", s: "Llama 3 · PEFT · vLLM" },
+          ].map((p) => (
+            <article key={p.n} className="group border-t border-border pt-6 flex gap-6">
+              <div className="font-serif italic text-muted-foreground text-lg w-10">{p.n}</div>
+              <div className="flex-1">
+                <h3 className="font-serif text-3xl tracking-tight mb-2 group-hover:italic transition-all">{p.t}</h3>
+                <p className="text-muted-foreground leading-relaxed mb-3">{p.d}</p>
+                <div className="text-[11px] tracking-[0.2em] uppercase text-foreground/60">{p.s}</div>
+              </div>
+            </article>
           ))}
         </div>
       </section>
 
-      {/* About */}
-      <section id="about" className="max-w-6xl mx-auto px-6 py-32 border-t border-border">
-        <div className="grid md:grid-cols-2 gap-16">
-          <div>
-            <div className="font-mono text-xs text-primary mb-3">/ 03 — ABOUT</div>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-              Engineer first.<br />Researcher second.
-            </h2>
-          </div>
-          <div className="space-y-6 text-muted-foreground leading-relaxed">
-            <p>
-              I started writing CUDA kernels in 2019 and never looked back. Today I help startups
-              and research labs put models behind real users — from prototyping a RAG slack-bot in
-              an afternoon to scaling a vLLM cluster serving millions of requests.
-            </p>
-            <p>
-              My north star is <span className="text-foreground">measurable impact</span>: faithful
-              evals, honest latency budgets, and code that another engineer can pick up at 2am.
-            </p>
-            <p>
-              When I'm not in a notebook, you'll find me running long distances along the Bosphorus
-              or losing at chess to a 14-year-old.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Contact */}
-      <section id="contact" className="max-w-6xl mx-auto px-6 py-32 border-t border-border">
-        <div className="rounded-3xl p-12 md:p-20 bg-card border border-border shadow-card relative overflow-hidden">
-          <div className="absolute -top-24 -right-24 size-64 rounded-full bg-primary/20 blur-3xl" />
-          <div className="absolute -bottom-24 -left-24 size-64 rounded-full bg-accent/20 blur-3xl" />
-          <div className="relative">
-            <div className="font-mono text-xs text-primary mb-3">/ 04 — CONTACT</div>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight max-w-2xl">
-              Have a hard problem? <span className="text-gradient">Let's solve it.</span>
-            </h2>
-            <p className="mt-6 text-muted-foreground max-w-lg">
-              Open to AI engineering contracts, full-time roles, and the occasional advisory call.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <a href="mailto:syed@ibrahim.dev" className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-primary text-primary-foreground font-medium hover:shadow-glow transition-all">
-                <Mail className="size-4" /> syed@ibrahim.dev
-              </a>
-              <a href="https://github.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-border hover:bg-secondary transition-colors">
-                <Github className="size-4" /> GitHub
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-border hover:bg-secondary transition-colors">
-                <Linkedin className="size-4" /> LinkedIn
-              </a>
-            </div>
-          </div>
-        </div>
+      <section id="contact" className="max-w-[1400px] mx-auto px-8 lg:px-14 py-32 border-t border-border text-center">
+        <div className="text-[11px] tracking-[0.25em] uppercase text-muted-foreground mb-6">/ Contact</div>
+        <h2 className="font-serif text-5xl md:text-7xl tracking-[-0.03em] max-w-3xl mx-auto">
+          Have a hard problem? <span className="italic-serif">Let's solve it.</span>
+        </h2>
+        <a
+          href="mailto:syed@ibrahim.dev"
+          className="inline-block mt-10 font-serif italic text-2xl underline decoration-1 underline-offset-8 hover:opacity-60 transition"
+        >
+          syed@ibrahim.dev
+        </a>
       </section>
+    </div>
+  );
+}
 
-      <footer className="max-w-6xl mx-auto px-6 py-10 border-t border-border flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground font-mono">
-        <div>© 2026 Syed Ibrahim. Built with intent.</div>
-        <div>Istanbul / Remote</div>
-      </footer>
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <div className="text-[11px] tracking-[0.25em] uppercase text-muted-foreground mb-2">{label}</div>
+      <div className="font-serif text-5xl tracking-tight">{value}</div>
     </div>
   );
 }
