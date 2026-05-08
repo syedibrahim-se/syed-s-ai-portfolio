@@ -338,9 +338,7 @@ function Dashboard() {
               <BarChart data={models}>
                 <XAxis dataKey="name" tick={{ fill: "rgba(255,255,255,0.4)", fontSize: 10 }} axisLine={false} tickLine={false} />
                 <Tooltip cursor={{ fill: "rgba(255,255,255,0.04)" }} contentStyle={{ background: "#1a1a2e", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 8, fontSize: 12 }} />
-                <Bar dataKey="calls" radius={[6, 6, 0, 0]}>
-                  {models.map((m) => <cell key={m.name} fill={m.color} />)}
-                </Bar>
+                <Bar dataKey="calls" radius={[6, 6, 0, 0]} fill="#a855f7" />
               </BarChart>
             </ResponsiveContainer>
           </div>
